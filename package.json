@@ -1,0 +1,16 @@
+{
+  "name": "@geta/eslint-config",
+  "version": "0.0.0",
+  "private": false,
+  "description": "ESLint configuration used by Geta.",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "geta",
+  "homepage": "https://github.com/geta-org/eslint-config-geta",
+  "keywords": ["eslint", "config", "react-native"],
+  "bugs": "https://github.com/geta-org/eslint-config-geta/issues",
+  "repository": {
+    "url": "https://github.com/geta-org/eslint-config-geta",
+    "type": "git"
+  }
+}
