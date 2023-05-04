@@ -19,6 +19,7 @@ module.exports = {
     'react-native',
     '@react-native',
     'jest',
+    'import',
   ],
 
   settings: {
@@ -267,7 +268,6 @@ module.exports = {
     'no-trailing-spaces': 1, // disallow trailing whitespace at the end of lines
     'no-underscore-dangle': 0, // disallow dangling underscores in identifiers
     'no-mixed-spaces-and-tabs': 1, // disallow mixed spaces and tabs for indentation
-    quotes: [1, 'single', 'avoid-escape'], // specify whether double or single quotes should be used
     'quote-props': 0, // require quotes around object literal property names (off by default)
     semi: 1, // require or disallow use of semicolons instead of ASI
     'sort-vars': 0, // sort variables within the same declaration block (off by default)
@@ -307,7 +307,7 @@ module.exports = {
     'react/no-unknown-property': 0,
     'react/no-unstable-nested-components': 1,
     'react/prop-types': 0,
-    'react/react-in-jsx-scope': 1,
+    'react/react-in-jsx-scope': 0,
     'react/self-closing-comp': 1,
     'react/wrap-multilines': 0,
 
@@ -328,17 +328,53 @@ module.exports = {
     'jest/no-identical-title': 1,
     'jest/valid-expect': 1,
 
-
-    // Prettier Plugin
-    // The following rules are made available via `eslint-plugin-prettier`.
     'prettier/prettier': ["error", {
       'printWidth': 80,
       'tabWidth': 2,
-      'singleQuote': true,
       'trailingComma': 'all',
       'arrowParens': 'always',
-      'semi': false,
       'endOfLine': 'auto',
     }],
+
+    // Import Plugin
+    // The following rules are made available via `eslint-plugin-import`.
+    'sort-imports': ['error', {ignoreCase: true, ignoreDeclarationSort: true}],
+
+    // Import Plugin
+    // The following rules are made available via `eslint-plugin-import`.
+    'import/order': [
+      1,
+      {
+        groups: [
+          'external',
+          'builtin',
+          'internal',
+          'sibling',
+          'parent',
+          'index',
+        ],
+        pathGroups: [
+          {
+            pattern: '@(react|react-native)',
+            group: 'external',
+            position: 'before',
+          },
+          {
+            pattern: '@src/**',
+            group: 'internal',
+          },
+          {
+            pattern: '@/**',
+            group: 'internal',
+          }
+        ],
+        pathGroupsExcludedImportTypes: ['internal', 'react'],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      },
+    ],
   },
 };
